@@ -7,6 +7,7 @@
 
 <title>EliteStats</title>
 
+<link rel="stylesheet" href="./assets/css/main.css">
 <link rel="stylesheet" href="./assets/css/stats.css">
 
 <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -17,33 +18,28 @@
 
 <body>
 
-<header class="navbar">
-
-<div class="logo">
-<div class="logo-icon">
-<span class="material-symbols-outlined">leaderboard</span>
-</div>
-<h2>EliteStats</h2>
-</div>
-
-<nav class="nav-links">
-<a href="#">Leagues</a>
-<a href="#">Teams</a>
-<a class="active" href="#">Players</a>
-<a href="#">Matches</a>
-</nav>
-
-<div class="nav-right">
-
-<div class="search-box">
-<span class="material-symbols-outlined">search</span>
-<input type="text" placeholder="Search players...">
-</div>
-
-<div class="avatar"></div>
-
-</div>
-
+<header class="header">
+  <div class="container nav">
+    <div class="logo">
+      <span class="material-symbols-outlined logo-icon">newspaper</span>
+      <h1>NEWS<span>PORTAL</span></h1>
+    </div>
+    <nav class="menu">
+      <a href="index.html">Home</a>
+      <a href="matches.html">Matches</a>
+      <a href="standings.html">Standings</a>
+      <a href="stats.html" class="active">Stats</a>
+    </nav>
+    <div class="nav-right">
+      <div class="search">
+        <span class="material-symbols-outlined">search</span>
+        <input type="text" placeholder="Search..." />
+      </div>
+      <button class="profile">
+        <span class="material-symbols-outlined">person</span>
+      </button>
+    </div>
+  </div>
 </header>
 
 
@@ -117,16 +113,31 @@
 
 
 <footer class="footer">
-
-<p>EliteStats Data Engine © 2024</p>
-
-<div class="footer-links">
-<a href="#">Privacy Policy</a>
-<a href="#">Terms of Service</a>
-<a href="#">API Docs</a>
-</div>
-
+  <div class="container footer-grid">
+    <div>
+      <h3 class="footer-logo">NEWSPORTAL</h3>
+      <p>Delivering accurate news and in-depth analysis from around the globe.</p>
+    </div>
+    <div>
+      <h4>Pages</h4>
+      <a href="index.html">Home</a>
+      <a href="matches.html">Matches</a>
+      <a href="standings.html">Standings</a>
+      <a href="stats.html">Stats</a>
+    </div>
+    <div>
+      <h4>Support</h4>
+      <a href="#">Help Center</a>
+      <a href="#">Contact Us</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </div>
+  <p class="copyright">© 2024 NewsPortal</p>
 </footer>
+
+<script src="js/sportsService.js"></script>
+<script src="js/main.js"></script>
+<script src="js/stats.js"></script>
 
 </body>
 </html>

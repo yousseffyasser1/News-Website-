@@ -1,86 +1,7 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "Work Sans", sans-serif;
-  background: #f6f6f8;
-  color: #111;
-}
-
 .container {
   max-width: 1200px;
   margin: auto;
   padding: 40px 20px;
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #fff;
-  padding: 15px 30px;
-  border-bottom: 1px solid #eee;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #1a227f;
-}
-
-.logo .icon {
-  background: #1a227f;
-  color: #fff;
-  padding: 6px;
-  border-radius: 6px;
-}
-
-.menu {
-  display: flex;
-  gap: 25px;
-}
-
-.menu a {
-  text-decoration: none;
-  color: #666;
-  font-weight: 500;
-}
-
-.menu a.active {
-  color: #1a227f;
-  border-bottom: 2px solid #1a227f;
-}
-
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.search {
-  display: flex;
-  align-items: center;
-  background: #f0f0f0;
-  padding: 6px 10px;
-  border-radius: 6px;
-}
-
-.search input {
-  border: none;
-  background: transparent;
-  outline: none;
-  margin-left: 6px;
-}
-
-.avatar {
-  width: 36px;
-  height: 36px;
-  background: #ccc;
-  border-radius: 50%;
 }
 
 .league-header {
@@ -185,6 +106,10 @@ body {
   border-left: 4px solid #ccc;
 }
 
+.match-card.upcoming {
+  border-left: 4px solid #1a227f;
+}
+
 .match-status {
   font-size: 12px;
   font-weight: 600;
@@ -240,36 +165,7 @@ body {
   cursor: pointer;
 }
 
-.footer {
-  background: #fff;
-  border-top: 1px solid #eee;
-  padding: 20px;
-  margin-top: 40px;
-}
-
-.footer-container {
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.links {
-  display: flex;
-  gap: 20px;
-}
-
-.links a {
-  text-decoration: none;
-  color: #666;
-}
-
 @media (max-width: 768px) {
-  .menu {
-    display: none;
-  }
-
   .filters {
     flex-direction: column;
     gap: 15px;
