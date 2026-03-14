@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>League Standings</title>
+
+    <link rel="stylesheet" href="./assets/css/standing.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="logo">
+        <span class="material-symbols-outlined">trophy</span>
+        <h2>League Center</h2>
+      </div>
+
+      <div class="header-actions">
+        <button class="icon-btn">
+          <span class="material-symbols-outlined">notifications</span>
+        </button>
+
+        <button class="icon-btn">
+          <span class="material-symbols-outlined">calendar_today</span>
+        </button>
+
+        <div class="avatar">JD</div>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- PAGE TITLE -->
+
+      <section class="league-header">
+        <div class="league-info">
+          <div class="league-logo"></div>
+
+          <div>
+            <h1>Premier League</h1>
+            <p>2023/24 Regular Season • Matchday 29 of 38</p>
+          </div>
+        </div>
+
+        <div class="header-buttons">
+          <button class="btn secondary">
+            <span class="material-symbols-outlined">filter_list</span>
+            Filter
+          </button>
+
+          <button class="btn primary">
+            <span class="material-symbols-outlined">share</span>
+            Export
+          </button>
+        </div>
+      </section>
+
+      <!-- NAV TABS -->
+
+      <nav class="tabs">
+        <a class="active" href="#">League Table</a>
+        <a href="#">Fixtures</a>
+        <a href="#">Stats</a>
+        <a href="#">Teams</a>
+      </nav>
+
+      <!-- LEGEND -->
+
+      <div class="legend">
+        <div><span class="blue"></span> Champions League</div>
+        <div><span class="orange"></span> Europa League</div>
+        <div><span class="red"></span> Relegation</div>
+      </div>
+
+      <!-- TABLE -->
+
+      <div class="table-card">
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Team</th>
+                <th>P</th>
+                <th>W</th>
+                <th>D</th>
+                <th>L</th>
+                <th>GF</th>
+                <th>GA</th>
+                <th>GD</th>
+                <th>Pts</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr class="champions">
+                <td>1</td>
+                <td class="team">Arsenal</td>
+                <td>28</td>
+                <td>20</td>
+                <td>4</td>
+                <td>4</td>
+                <td>70</td>
+                <td>24</td>
+                <td class="gd">+46</td>
+                <td class="points">64</td>
+              </tr>
+
+              <tr class="champions">
+                <td>2</td>
+                <td class="team">Liverpool</td>
+                <td>28</td>
+                <td>19</td>
+                <td>6</td>
+                <td>3</td>
+                <td>65</td>
+                <td>26</td>
+                <td class="gd">+39</td>
+                <td class="points">63</td>
+              </tr>
+
+              <tr class="champions">
+                <td>3</td>
+                <td class="team">Manchester City</td>
+                <td>28</td>
+                <td>19</td>
+                <td>6</td>
+                <td>3</td>
+                <td>63</td>
+                <td>28</td>
+                <td class="gd">+35</td>
+                <td class="points">63</td>
+              </tr>
+
+              <tr class="champions">
+                <td>4</td>
+                <td class="team">Aston Villa</td>
+                <td>29</td>
+                <td>17</td>
+                <td>5</td>
+                <td>7</td>
+                <td>60</td>
+                <td>42</td>
+                <td class="gd">+18</td>
+                <td class="points">56</td>
+              </tr>
+
+              <tr class="europa">
+                <td>5</td>
+                <td class="team">Tottenham</td>
+                <td>28</td>
+                <td>16</td>
+                <td>5</td>
+                <td>7</td>
+                <td>59</td>
+                <td>39</td>
+                <td class="gd">+20</td>
+                <td class="points">53</td>
+              </tr>
+
+              <tr class="relegation">
+                <td>18</td>
+                <td class="team">Nottingham Forest</td>
+                <td>29</td>
+                <td>6</td>
+                <td>7</td>
+                <td>16</td>
+                <td>35</td>
+                <td>51</td>
+                <td class="gd negative">-16</td>
+                <td class="points">21*</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- STATS CARDS -->
+
+      <section class="stats-grid">
+        <div class="stat-card">
+          <h3>
+            <span class="material-symbols-outlined">sports_soccer</span>
+            Top Scorer
+          </h3>
+
+          <p class="stat-name">Erling Haaland</p>
+          <p class="stat-info">Manchester City • 18 Goals</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>
+            <span class="material-symbols-outlined">handshake</span>
+            Most Assists
+          </h3>
+
+          <p class="stat-name">Ollie Watkins</p>
+          <p class="stat-info">Aston Villa • 10 Assists</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>
+            <span class="material-symbols-outlined">shield</span>
+            Clean Sheets
+          </h3>
+
+          <p class="stat-name">David Raya</p>
+          <p class="stat-info">Arsenal • 9 Sheets</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-logo">
+        <span class="material-symbols-outlined">sports_kabaddi</span>
+        FootballData Pro
+      </div>
+
+      <div class="footer-links">
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+        <a href="#">Cookies</a>
+      </div>
+
+      <p>© 2024 League Center</p>
+    </footer>
+  </body>
+</html>

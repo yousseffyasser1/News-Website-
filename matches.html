@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>League Matches</title>
+
+    <link rel="stylesheet" href="./assets/css/matches.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header class="navbar">
+      <div class="logo">
+        <span class="material-symbols-outlined icon">sports_soccer</span>
+        <h2>Elite League</h2>
+      </div>
+
+      <nav class="menu">
+        <a class="active" href="#">Schedule</a>
+        <a href="#">Standings</a>
+        <a href="#">Teams</a>
+        <a href="#">News</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="search">
+          <span class="material-symbols-outlined">search</span>
+          <input type="text" placeholder="Search matches..." />
+        </div>
+
+        <span class="material-symbols-outlined bell">notifications</span>
+
+        <div class="avatar"></div>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- league header -->
+
+      <section class="league-header">
+        <div class="league-info">
+          <div class="trophy">
+            <span class="material-symbols-outlined">trophy</span>
+          </div>
+
+          <div>
+            <h1>Premier Division</h1>
+            <p>Regular Season 2023/2024</p>
+          </div>
+        </div>
+
+        <button class="sync-btn">
+          <span class="material-symbols-outlined">calendar_month</span>
+          Sync Calendar
+        </button>
+      </section>
+
+      <!-- filters -->
+
+      <section class="filters">
+        <div class="tabs">
+          <button class="active">All Matches</button>
+          <button>Live</button>
+          <button>Upcoming</button>
+          <button>Finished</button>
+        </div>
+
+        <div class="filter-actions">
+          <button class="filter-btn">
+            <span class="material-symbols-outlined">filter_alt</span>
+            All Teams
+          </button>
+
+          <button class="filter-btn">
+            <span class="material-symbols-outlined">event</span>
+            March 2024
+          </button>
+        </div>
+      </section>
+
+      <!-- matches -->
+
+      <section class="matches">
+        <h3 class="day-title">Today, March 14</h3>
+
+        <div class="match-card live">
+          <div class="match-status">
+            <span class="live-dot"></span>
+            LIVE 62'
+
+            <p>Stadium Arena</p>
+          </div>
+
+          <div class="teams">
+            <div class="team left">
+              <span>Manchester City</span>
+              <img src="assets/images/teams/mancity.png" />
+            </div>
+
+            <div class="score">2 - 1</div>
+
+            <div class="team right">
+              <img src="assets/images/teams/arsenal.png" />
+              <span>Arsenal</span>
+            </div>
+          </div>
+
+          <div class="match-actions">
+            <span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">chevron_right</span>
+          </div>
+        </div>
+
+        <div class="match-card finished">
+          <div class="match-status">
+            FINISHED
+            <p>14:00</p>
+          </div>
+
+          <div class="teams">
+            <div class="team left">
+              <span>Liverpool</span>
+              <img src="assets/images/teams/liverpool.png" />
+            </div>
+
+            <div class="score">3 - 0</div>
+
+            <div class="team right">
+              <img src="assets/images/teams/chelsea.png" />
+              <span>Chelsea</span>
+            </div>
+          </div>
+
+          <div class="match-actions">
+            <span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">chevron_right</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="load-more">
+        <button>Load More Matches</button>
+
+        <p>Showing 24 of 380 matches</p>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <p>© 2024 Elite League Official Schedule</p>
+
+        <div class="links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Settings</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

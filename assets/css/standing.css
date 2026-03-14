@@ -1,0 +1,317 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Work Sans", sans-serif;
+  background: #f6f6f8;
+  color: #1e293b;
+}
+
+/* HEADER */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #1a227f;
+  font-weight: 700;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.icon-btn {
+  background: #eef0ff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background: #1a227f;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 600;
+}
+
+/* CONTAINER */
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+/* HEADER SECTION */
+
+.league-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.league-info {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.league-logo {
+  width: 60px;
+  height: 60px;
+  background: #ddd;
+  border-radius: 10px;
+}
+
+.league-header h1 {
+  font-size: 28px;
+}
+
+.league-header p {
+  color: #64748b;
+}
+
+/* BUTTONS */
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.primary {
+  background: #1a227f;
+  color: #fff;
+}
+
+.secondary {
+  background: #fff;
+  border: 1px solid #ddd;
+}
+
+/* TABS */
+
+.tabs {
+  display: flex;
+  gap: 30px;
+  border-bottom: 1px solid #ddd;
+  margin-top: 30px;
+}
+
+.tabs a {
+  padding: 10px 0;
+  font-weight: 600;
+  color: #64748b;
+  text-decoration: none;
+}
+
+.tabs a.active {
+  color: #1a227f;
+  border-bottom: 2px solid #1a227f;
+}
+
+/* LEGEND */
+
+.legend {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0;
+  font-size: 12px;
+}
+
+.legend span {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  border-radius: 3px;
+  margin-right: 5px;
+}
+
+.blue {
+  background: #2563eb;
+}
+.orange {
+  background: #f97316;
+}
+.red {
+  background: #dc2626;
+}
+
+/* TABLE */
+
+.table-card {
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #f1f5f9;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+th,
+td {
+  padding: 14px;
+  text-align: center;
+}
+
+td.team {
+  text-align: left;
+  font-weight: 600;
+}
+
+tbody tr {
+  border-top: 1px solid #f1f5f9;
+}
+
+tbody tr:hover {
+  background: #f8fafc;
+}
+
+.points {
+  font-weight: 700;
+  color: #1a227f;
+}
+
+.gd {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.negative {
+  color: #dc2626;
+}
+
+/* RANK COLORS */
+
+.champions td:first-child {
+  border-left: 4px solid #2563eb;
+}
+
+.europa td:first-child {
+  border-left: 4px solid #f97316;
+}
+
+.relegation td:first-child {
+  border-left: 4px solid #dc2626;
+}
+
+/* STATS */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.stat-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+}
+
+.stat-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  color: #1a227f;
+}
+
+.stat-name {
+  font-weight: 700;
+}
+
+.stat-info {
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* FOOTER */
+
+.footer {
+  margin-top: 60px;
+  padding: 30px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  background: #fff;
+}
+
+.footer-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #64748b;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .header {
+    padding: 15px;
+  }
+
+  .tabs {
+    overflow-x: auto;
+  }
+}
