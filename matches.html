@@ -6,6 +6,7 @@
 
     <title>League Matches</title>
 
+    <link rel="stylesheet" href="./assets/css/main.css" />
     <link rel="stylesheet" href="./assets/css/matches.css" />
 
     <link
@@ -20,28 +21,27 @@
   </head>
 
   <body>
-    <header class="navbar">
-      <div class="logo">
-        <span class="material-symbols-outlined icon">sports_soccer</span>
-        <h2>Elite League</h2>
-      </div>
-
-      <nav class="menu">
-        <a class="active" href="#">Schedule</a>
-        <a href="#">Standings</a>
-        <a href="#">Teams</a>
-        <a href="#">News</a>
-      </nav>
-
-      <div class="nav-actions">
-        <div class="search">
-          <span class="material-symbols-outlined">search</span>
-          <input type="text" placeholder="Search matches..." />
+    <header class="header">
+      <div class="container nav">
+        <div class="logo">
+          <span class="material-symbols-outlined logo-icon">newspaper</span>
+          <h1>NEWS<span>PORTAL</span></h1>
         </div>
-
-        <span class="material-symbols-outlined bell">notifications</span>
-
-        <div class="avatar"></div>
+        <nav class="menu">
+          <a href="index.html">Home</a>
+          <a href="matches.html" class="active">Matches</a>
+          <a href="standings.html">Standings</a>
+          <a href="stats.html">Stats</a>
+        </nav>
+        <div class="nav-right">
+          <div class="search">
+            <span class="material-symbols-outlined">search</span>
+            <input type="text" placeholder="Search..." />
+          </div>
+          <button class="profile">
+            <span class="material-symbols-outlined">person</span>
+          </button>
+        </div>
       </div>
     </header>
 
@@ -157,15 +157,30 @@
     </main>
 
     <footer class="footer">
-      <div class="footer-container">
-        <p>© 2024 Elite League Official Schedule</p>
-
-        <div class="links">
+      <div class="container footer-grid">
+        <div>
+          <h3 class="footer-logo">NEWSPORTAL</h3>
+          <p>Delivering accurate news and in-depth analysis from around the globe.</p>
+        </div>
+        <div>
+          <h4>Pages</h4>
+          <a href="index.html">Home</a>
+          <a href="matches.html">Matches</a>
+          <a href="standings.html">Standings</a>
+          <a href="stats.html">Stats</a>
+        </div>
+        <div>
+          <h4>Support</h4>
+          <a href="#">Help Center</a>
+          <a href="#">Contact Us</a>
           <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">Cookie Settings</a>
         </div>
       </div>
+      <p class="copyright">© 2024 NewsPortal</p>
     </footer>
+
+    <script src="js/sportsService.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/matches.js"></script>
   </body>
 </html>
