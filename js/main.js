@@ -17,7 +17,8 @@ document.addEventListener('DOMContentLoaded', function () {
       if (e.key === 'Enter') {
         var query = searchInput.value.trim();
         if (query) {
-          alert('Search results for: "' + query + '"');
+          searchInput.value = '';
+          searchInput.placeholder = 'Results for "' + query + '"';
         }
       }
     });
