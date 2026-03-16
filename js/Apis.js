@@ -68,16 +68,19 @@ function disNews(data, articles){
             article.image = defaultImage;
         }
 
+        const titleText = article.title ? article.title.split(" ",8).join(" ") : "Untitled";
+        const descriptionText = article.description ? `${article.description.split(" ",20).join(" ")}...` : "";
+
         allNews +=`
         <div class="card">
-            <a href="${article.url}" target="_blank">
+            <a href="${article.url}" target="_blank" rel="noopener noreferrer">
                 <img src="${article.image}"/>
             </a>
 
-            <h3>${article.title.split(" ",8).join(" ")}</h3>
+            <h3>${titleText}</h3>
 
             <p>
-            ${article.description.split(" ",20).join(" ")}...
+            ${descriptionText}
             </p>
         </div>
         `;
