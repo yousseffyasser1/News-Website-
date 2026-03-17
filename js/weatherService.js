@@ -103,7 +103,7 @@ function fetchNewsData() {
 fetchNewsData();
 
 function displayNews() {
-  // NewsData =  NewsData.slice(1, 4);
+  NewsData =  NewsData.slice(1, 4);
   console.log(NewsData);
   let AllNews = ``;
   for (let i = 0; i < NewsData.length; i++) {
@@ -117,10 +117,13 @@ function displayNews() {
 
             <h3>${NewsData[i].title.split(" ", 5).join(" ")}</h3>
 
-            <p>${NewsData[i].content.split(" ", 10).join(" ")}...</p>
+            <p>${NewsData[i].content.split(" ", 15).join(" ")}...</p>
           </div>
     `;
   }
-  document.querySelector(".grid").innerHTML = AllNews;
+  let grids = document.querySelectorAll(".grid");
+  grids.forEach((grid) => {
+    grid.innerHTML = AllNews;
+  });
   console.log(AllNews);
 }
