@@ -1,6 +1,6 @@
 let API_KEY = `d3a8026612fd7d8fd8dd9a7eb7182597`;
 // let baseUrl = `https://gnews.io/api/v4/search?q=${endpoint}&lang=en&max=3&apikey=${API_KEY}`;
-let newsData = [];
+const newsRequestControllers = {};
 const imageExtensions = [
   "jpg",
   "jpeg",
@@ -17,43 +17,70 @@ const imageExtensions = [
 ];
 let defaultImage = `../assets/download.png`
 async function getNewData(endpoint) {
- await fetch(`https://gnews.io/api/v4/search?q=${endpoint}&lang=en&max=3&apikey=${API_KEY}`)
-    .then( (res) => {
-       return  res.json();
+  if (newsRequestControllers[endpoint]) {
+    newsRequestControllers[endpoint].abort();
+  }
+
+  const controller = new AbortController();
+  newsRequestControllers[endpoint] = controller;
+
+  return fetch(`https://gnews.io/api/v4/search?q=${endpoint}&lang=en&max=3&apikey=${API_KEY}`, {
+    signal: controller.signal
+  })
+    .then((res) => {
+      return res.json();
     })
     .then((data) => {
-      newsData = data.articles;
-      console.log(newsData)
-      disNews(endpoint);
+      if (newsRequestControllers[endpoint] !== controller) {
+        return;
+      }
+      const articles = Array.isArray(data.articles) ? data.articles : [];
+      console.log(articles)
+      disNews(endpoint, articles);
+    })
+    .catch((error) => {
+      if (error && error.name === 'AbortError') {
+        return;
+      }
+      console.error(`Error fetching news data for ${endpoint}:`, error);
+    })
+    .finally(() => {
+      if (newsRequestControllers[endpoint] === controller) {
+        delete newsRequestControllers[endpoint];
+      }
     });
 }
 
 getNewData('Sports');
 getNewData('Health');
 getNewData('Technology');
-function disNews(data){
+function disNews(data, articles){
     let allNews = ``;
 
-    for (let i = 0; i < newsData.length; i++) {
+    for (let i = 0; i < articles.length; i++) {
+        let article = articles[i];
 
         let validImage = imageExtensions.some(ext => 
-            newsData[i].image && newsData[i].image.includes(ext)
+            article.image && article.image.includes(ext)
         );
 
         if(!validImage){
-            newsData[i].image = defaultImage;
+            article.image = defaultImage;
         }
+
+        const titleText = article.title ? article.title.split(" ",8).join(" ") : "Untitled";
+        const descriptionText = article.description ? `${article.description.split(" ",20).join(" ")}...` : "";
 
         allNews +=`
         <div class="card">
-            <a href="${newsData[i].url}" target="_blank">
-                <img src="${newsData[i].image}"/>
+            <a href="${article.url}" target="_blank" rel="noopener noreferrer">
+                <img src="${article.image}"/>
             </a>
 
-            <h3>${newsData[i].title.split(" ",8).join(" ")}</h3>
+            <h3>${titleText}</h3>
 
             <p>
-            ${newsData[i].description.split(" ",20).join(" ")}...
+            ${descriptionText}
             </p>
         </div>
         `;
