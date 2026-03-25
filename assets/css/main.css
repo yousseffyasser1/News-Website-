@@ -11,7 +11,7 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+  /* max-width: 1200px; */
   margin: auto;
   padding: 0 20px;
 }
@@ -21,6 +21,7 @@ body {
   border-bottom: 1px solid #e2e8f0;
   position: sticky;
   top: 0;
+  padding: 0 20px;
 }
 
 .nav {
@@ -100,7 +101,7 @@ body {
 }
 
 main.container {
-  max-width: 80%;
+  max-width: 90%;
   padding-top: 40px;
   padding-bottom: 40px;
 }
@@ -545,6 +546,52 @@ main.container {
   }
 }
 
+.league-tabs {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 0;
+      }
+
+      .date-range {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .date-range input[type="date"] {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 6px 12px;
+        font-family: inherit;
+        font-size: 0.875rem;
+        color: inherit;
+        background: var(--card-bg, #fff);
+        cursor: pointer;
+      }
+      .date-separator {
+        color: #999;
+        font-size: 1rem;
+      }
+      .apply-btn {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 6px 14px;
+        background: var(--primary, #1a56db);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 0.875rem;
+        cursor: pointer;
+        transition: opacity 0.2s;
+      }
+      .apply-btn:hover {
+        opacity: 0.85;
+      }
+      .apply-btn .material-symbols-outlined {
+        font-size: 1rem;
+      }
+
 /* =============================================
    STATS PAGE STYLES
    ============================================= */
@@ -843,3 +890,96 @@ tbody tr:hover {
     overflow-x: auto;
   }
 }
+
+ /* ── League switcher ── */
+      .league-switcher {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+      .league-switcher button {
+        padding: 8px 18px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: transparent;
+        font-family: inherit;
+        font-size: 0.875rem;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .league-switcher button.active {
+        background: var(--primary, #1a56db);
+        color: #fff;
+        border-color: var(--primary, #1a56db);
+      }
+
+      /* ── Date range ── */
+      .date-range {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+      }
+      .date-range input[type="date"] {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 6px 12px;
+        font-family: inherit;
+        font-size: 0.875rem;
+        color: inherit;
+        background: var(--card-bg, #fff);
+        cursor: pointer;
+      }
+      .date-separator {
+        color: #999;
+        font-size: 1rem;
+      }
+      .apply-btn {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 6px 14px;
+        background: var(--primary, #1a56db);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 0.875rem;
+        cursor: pointer;
+        transition: opacity 0.2s;
+      }
+      .apply-btn:hover {
+        opacity: 0.85;
+      }
+      .apply-btn .material-symbols-outlined {
+        font-size: 1rem;
+      }
+
+      /* ── Skeleton ── */
+      .skeleton-row td {
+        background: #f0f0f0;
+        color: transparent;
+        border-radius: 4px;
+        animation: pulse 1.2s infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.4;
+        }
+      }
+
+      /* ── Team cell with logo ── */
+      .team-cell {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .team-cell img {
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
+      }

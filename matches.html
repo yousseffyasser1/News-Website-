@@ -3,16 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>League Matches</title>
-
     <link rel="stylesheet" href="./assets/css/main.css" />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
       rel="stylesheet"
@@ -45,113 +41,71 @@
     </header>
 
     <main class="container">
-      <!-- league header -->
-
+      <!-- league header — h1 و p بيتحدثوا من JS -->
       <section class="league-header">
         <div class="league-info">
           <div class="trophy">
             <span class="material-symbols-outlined">trophy</span>
           </div>
-
           <div>
-            <h1>Premier Division</h1>
-            <p>Regular Season 2023/2024</p>
+            <h1 id="league-title">Premier League</h1>
+            <p id="league-subtitle">Regular Season 2025/2026</p>
           </div>
         </div>
-
         <button class="sync-btn">
           <span class="material-symbols-outlined">calendar_month</span>
           Sync Calendar
         </button>
       </section>
 
-      <!-- filters -->
-
+      <!-- ① League tabs -->
       <section class="filters">
-        <div class="tabs">
+        <div class="tabs league-tabs">
+          <button
+            class="active"
+            data-league="premier"
+            data-title="Premier League"
+            data-flag="🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+          >
+            🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League
+          </button>
+          <button
+            data-league="egyptian"
+            data-title="Egyptian League"
+            data-flag="🇪🇬"
+          >
+            🇪🇬 Egyptian League
+          </button>
+        </div>
+      </section>
+
+      <!-- ② Date picker + status tabs -->
+      <section class="filters">
+        <div class="date-range">
+          <span class="material-symbols-outlined">calendar_today</span>
+          <input type="date" id="date-from" />
+          <span class="date-separator">→</span>
+          <input type="date" id="date-to" />
+          <button id="apply-date" class="apply-btn">
+            <span class="material-symbols-outlined">search</span>
+            Apply
+          </button>
+        </div>
+
+        <div class="tabs status-tabs">
           <button class="active">All Matches</button>
           <button>Live</button>
           <button>Upcoming</button>
           <button>Finished</button>
         </div>
-
-        <div class="filter-actions">
-          <button class="filter-btn">
-            <span class="material-symbols-outlined">filter_alt</span>
-            All Teams
-          </button>
-
-          <button class="filter-btn">
-            <span class="material-symbols-outlined">event</span>
-            March 2024
-          </button>
-        </div>
       </section>
 
-      <!-- matches -->
-
-      <section class="matches">
-        <h3 class="day-title">Today, March 14</h3>
-
-        <div class="match-card live">
-          <div class="match-status">
-            <span class="live-dot"></span>
-            LIVE 62'
-
-            <p>Stadium Arena</p>
-          </div>
-
-          <div class="teams">
-            <div class="team left">
-              <span>Manchester City</span>
-              <img src="assets/images/teams/mancity.png" />
-            </div>
-
-            <div class="score">2 - 1</div>
-
-            <div class="team right">
-              <img src="assets/images/teams/arsenal.png" />
-              <span>Arsenal</span>
-            </div>
-          </div>
-
-          <div class="match-actions">
-            <span class="material-symbols-outlined">star</span>
-            <span class="material-symbols-outlined">chevron_right</span>
-          </div>
-        </div>
-
-        <div class="match-card finished">
-          <div class="match-status">
-            FINISHED
-            <p>14:00</p>
-          </div>
-
-          <div class="teams">
-            <div class="team left">
-              <span>Liverpool</span>
-              <img src="assets/images/teams/liverpool.png" />
-            </div>
-
-            <div class="score">3 - 0</div>
-
-            <div class="team right">
-              <img src="assets/images/teams/chelsea.png" />
-              <span>Chelsea</span>
-            </div>
-          </div>
-
-          <div class="match-actions">
-            <span class="material-symbols-outlined">star</span>
-            <span class="material-symbols-outlined">chevron_right</span>
-          </div>
-        </div>
-      </section>
+      <!-- matches — filled by matches.js -->
+      <section class="matches"></section>
 
       <div class="load-more">
         <button>Load More Matches</button>
-
-        <p>Showing 24 of 380 matches</p>
+        <p>Showing 0 of 0 matches</p>
       </div>
     </main>
 
@@ -159,7 +113,10 @@
       <div class="container footer-grid">
         <div>
           <h3 class="footer-logo">NEWSPORTAL</h3>
-          <p>Delivering accurate news and in-depth analysis from around the globe.</p>
+          <p>
+            Delivering accurate news and in-depth analysis from around the
+            globe.
+          </p>
         </div>
         <div>
           <h4>Pages</h4>
@@ -178,8 +135,6 @@
       <p class="copyright">© 2024 NewsPortal</p>
     </footer>
 
-    <script src="js/sportsService.js"></script>
-    <script src="js/main.js"></script>
     <script src="js/matches.js"></script>
   </body>
 </html>

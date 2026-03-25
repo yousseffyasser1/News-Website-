@@ -6,12 +6,10 @@
     <title>League Standings</title>
 
     <link rel="stylesheet" href="./assets/css/main.css" />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
       rel="stylesheet"
@@ -44,33 +42,62 @@
     </header>
 
     <main class="container">
-      <!-- PAGE TITLE -->
-
+      <!-- PAGE TITLE — بيتحدث من JS -->
       <section class="league-header">
         <div class="league-info">
-          <div class="league-logo"></div>
-
+          <div class="trophy">
+            <span class="material-symbols-outlined">trophy</span>
+          </div>
           <div>
-            <h1>Premier League</h1>
-            <p>2023/24 Regular Season • Matchday 29 of 38</p>
+            <h1 id="league-title">Premier League</h1>
+            <p id="league-subtitle">2025/26 Regular Season</p>
           </div>
         </div>
 
-        <div class="header-buttons">
+        <!-- <div class="header-buttons">
           <button class="btn secondary">
             <span class="material-symbols-outlined">filter_list</span>
             Filter
           </button>
-
           <button class="btn primary">
             <span class="material-symbols-outlined">share</span>
             Export
           </button>
-        </div>
+        </div> -->
       </section>
 
-      <!-- NAV TABS -->
+      <!-- ① LEAGUE SWITCHER -->
+      <div class="league-switcher">
+        <button
+          class="active"
+          data-league="premier"
+          data-title="Premier League"
+          data-subtitle="England"
+        >
+          🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League
+        </button>
+        <button
+          data-league="egyptian"
+          data-title="Egyptian League"
+          data-subtitle="Egypt"
+        >
+          🇪🇬 Egyptian League
+        </button>
+      </div>
 
+      <!-- ② DATE RANGE -->
+      <div class="date-range">
+        <span class="material-symbols-outlined">calendar_today</span>
+        <input type="date" id="date-from" />
+        <span class="date-separator">→</span>
+        <input type="date" id="date-to" />
+        <button id="apply-date" class="apply-btn">
+          <span class="material-symbols-outlined">search</span>
+          Apply
+        </button>
+      </div>
+
+      <!-- ③ NAV TABS -->
       <nav class="tabs">
         <a class="active" href="#">League Table</a>
         <a href="#">Fixtures</a>
@@ -78,19 +105,17 @@
         <a href="#">Teams</a>
       </nav>
 
-      <!-- LEGEND -->
-
+      <!-- ④ LEGEND -->
       <div class="legend">
         <div><span class="blue"></span> Champions League</div>
         <div><span class="orange"></span> Europa League</div>
         <div><span class="red"></span> Relegation</div>
       </div>
 
-      <!-- TABLE -->
-
+      <!-- ⑤ TABLE -->
       <div class="table-card">
         <div class="table-wrapper">
-          <table>
+          <table id="standings-table">
             <thead>
               <tr>
                 <th>Rank</th>
@@ -105,121 +130,37 @@
                 <th>Pts</th>
               </tr>
             </thead>
-
-            <tbody>
-              <tr class="champions">
-                <td>1</td>
-                <td class="team">Arsenal</td>
-                <td>28</td>
-                <td>20</td>
-                <td>4</td>
-                <td>4</td>
-                <td>70</td>
-                <td>24</td>
-                <td class="gd">+46</td>
-                <td class="points">64</td>
-              </tr>
-
-              <tr class="champions">
-                <td>2</td>
-                <td class="team">Liverpool</td>
-                <td>28</td>
-                <td>19</td>
-                <td>6</td>
-                <td>3</td>
-                <td>65</td>
-                <td>26</td>
-                <td class="gd">+39</td>
-                <td class="points">63</td>
-              </tr>
-
-              <tr class="champions">
-                <td>3</td>
-                <td class="team">Manchester City</td>
-                <td>28</td>
-                <td>19</td>
-                <td>6</td>
-                <td>3</td>
-                <td>63</td>
-                <td>28</td>
-                <td class="gd">+35</td>
-                <td class="points">63</td>
-              </tr>
-
-              <tr class="champions">
-                <td>4</td>
-                <td class="team">Aston Villa</td>
-                <td>29</td>
-                <td>17</td>
-                <td>5</td>
-                <td>7</td>
-                <td>60</td>
-                <td>42</td>
-                <td class="gd">+18</td>
-                <td class="points">56</td>
-              </tr>
-
-              <tr class="europa">
-                <td>5</td>
-                <td class="team">Tottenham</td>
-                <td>28</td>
-                <td>16</td>
-                <td>5</td>
-                <td>7</td>
-                <td>59</td>
-                <td>39</td>
-                <td class="gd">+20</td>
-                <td class="points">53</td>
-              </tr>
-
-              <tr class="relegation">
-                <td>18</td>
-                <td class="team">Nottingham Forest</td>
-                <td>29</td>
-                <td>6</td>
-                <td>7</td>
-                <td>16</td>
-                <td>35</td>
-                <td>51</td>
-                <td class="gd negative">-16</td>
-                <td class="points">21*</td>
-              </tr>
+            <tbody id="standings-body">
+              <!-- filled by standings.js -->
             </tbody>
           </table>
         </div>
       </div>
 
-      <!-- STATS CARDS -->
-
+      <!-- ⑥ STATS CARDS -->
       <section class="stats-grid">
         <div class="stat-card">
           <h3>
-            <span class="material-symbols-outlined">sports_soccer</span>
-            Top Scorer
+            <span class="material-symbols-outlined">sports_soccer</span> Top
+            Scorer
           </h3>
-
-          <p class="stat-name">Erling Haaland</p>
-          <p class="stat-info">Manchester City • 18 Goals</p>
+          <p class="stat-name" id="top-scorer-name">—</p>
+          <p class="stat-info" id="top-scorer-info">Loading…</p>
         </div>
-
         <div class="stat-card">
           <h3>
-            <span class="material-symbols-outlined">handshake</span>
-            Most Assists
+            <span class="material-symbols-outlined">handshake</span> Most
+            Assists
           </h3>
-
-          <p class="stat-name">Ollie Watkins</p>
-          <p class="stat-info">Aston Villa • 10 Assists</p>
+          <p class="stat-name" id="top-assists-name">—</p>
+          <p class="stat-info" id="top-assists-info">Loading…</p>
         </div>
-
         <div class="stat-card">
           <h3>
-            <span class="material-symbols-outlined">shield</span>
-            Clean Sheets
+            <span class="material-symbols-outlined">shield</span> Clean Sheets
           </h3>
-
-          <p class="stat-name">David Raya</p>
-          <p class="stat-info">Arsenal • 9 Sheets</p>
+          <p class="stat-name" id="top-cs-name">—</p>
+          <p class="stat-info" id="top-cs-info">Loading…</p>
         </div>
       </section>
     </main>
@@ -228,7 +169,10 @@
       <div class="container footer-grid">
         <div>
           <h3 class="footer-logo">NEWSPORTAL</h3>
-          <p>Delivering accurate news and in-depth analysis from around the globe.</p>
+          <p>
+            Delivering accurate news and in-depth analysis from around the
+            globe.
+          </p>
         </div>
         <div>
           <h4>Pages</h4>
@@ -247,8 +191,6 @@
       <p class="copyright">© 2024 NewsPortal</p>
     </footer>
 
-    <script src="js/sportsService.js"></script>
-    <script src="js/main.js"></script>
     <script src="js/standings.js"></script>
   </body>
 </html>

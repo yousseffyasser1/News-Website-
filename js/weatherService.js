@@ -1,129 +1,136 @@
-// var WeatherService = (function () {
-//   var weatherData = {
-//     temperature: 24,
-//     condition: 'Sunny',
-//     high: 28,
-//     low: 19,
-//     icon: 'light_mode'
-//   };
+// ================= WEATHER =================
+async function fetchWeatherData() {
+  try {
+    let weatherApiKey = "b354cbdc88f11813cc7f54f6ddd43b55";
+    let weatherApiCityName = "Cairo";
+    let countryCode = "EG";
 
-// fetch
-//    returtn promise
-//   //  res ==> json
-//   //   res.json() ==> promise
-//   const apiKey = "fceeccc809b9c51e8e3d550f2ba66dcd";
+    let weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${weatherApiCityName},${countryCode}&appid=${weatherApiKey}&units=metric`;
 
-//  async function getWeather(apiKey, city = "Cairo") {
-//   const response = await fetch(
-//     `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
-//   );
+    const response = await fetch(weatherApiUrl);
 
-//   // readable stream
-//   const data = await response.json();
+    if (!response.ok) {
+      throw new Error("Failed to fetch weather");
+    }
 
-//   console.log(data)
+    const data = await response.json();
 
-//   if (!response.ok) {
-//     throw new Error("Weather data not found");
-//   }
+    document.getElementById("desc").textContent = data.weather[0].description;
+    document.getElementById("temp").innerHTML = data.main.temp.toFixed(0) + "°C";
+    document.querySelector("#weather-icon").src =
+      `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+    document.getElementById("location").textContent =
+      `${data.name}, ${data.sys.country}`;
 
-// }
-
-//  map ==>
-
-// getWeather(apiKey , "London")
-
-//   return {
-//     getWeather: function () {
-//       return weatherData;
-//     },
-//     renderWeather: function (containerSelector) {
-//       var container = document.querySelector(containerSelector);
-//       if (!container) return;
-//       var data = this.getWeather();
-//       container.innerHTML =
-//         '<span class="material-symbols-outlined weather-icon">' + data.icon + '</span>' +
-//         '<div><h2>' + data.temperature + '°C</h2>' +
-//         '<p>' + data.condition + ' • High ' + data.high + '° / Low ' + data.low + '°</p></div>';
-//     }
-//   };
-// })();
-
-// ==============================================================================================
-
-// const apiKey = "fceeccc809b9c51e8e3d550f2ba66dcd";
-// const urlApi = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-// console.log(urlApi);
-
-function fetchWeatherData() {
-  let weatherApiKey = "b354cbdc88f11813cc7f54f6ddd43b55";
-  let weatherApiCityName = "Cairo";
-  let countryCode = "EG";
-  let weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${weatherApiCityName},${countryCode}&appid=${weatherApiKey}&units=metric`;
-
-  fetch(weatherApiUrl)
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      // console.log(data.main.temp);
-      // console.log(data.weather[0].description);
-      document.getElementById("desc").textContent = data.weather[0].description;
-      document.getElementById("temp").innerHTML =
-        data.main.temp.toFixed(0) + "°C";
-      document.querySelector("#weather-icon").src =
-        `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-      document.getElementById("location").textContent =
-        `${data.name}, ${data.sys.country}`;
-    });
+  } catch (error) {
+    console.error("Weather Error:", error);
+    document.getElementById("desc").textContent = "Weather unavailable";
+  }
 }
 
-fetchWeatherData();
+// ================= NEWS =================
+let newsApiKey = `dbf89e299aa785448036a9d4e5e7e544`;
+const imageExtensions = ["jpg","jpeg","png","gif","webp","svg","avif"];
+let defaultImage = `../assets/download.png`;
 
-let NewsData = [];
-function fetchNewsData() {
-  // let newsApiKey = "16bf8cdda6e7133c95f1f68f78604358";
-  let newsApiKey = "e14ef99edc2094fe65a1486e4cc6611d";
-  let newsApiUrl = `https://gnews.io/api/v4/search?q=Google&lang=en&max=5&apikey=${newsApiKey}`;
+async function getNewData(endpoint) {
+  try {
+    const response = await fetch(
+      `https://gnews.io/api/v4/search?q=${endpoint}&lang=en&max=3&apikey=${newsApiKey}`
+    );
 
-  fetch(newsApiUrl)
-    .then((newsResponse) => {
-      return newsResponse.json();
-    })
-    .then((newsData) => {
-      console.log(newsApiUrl);
-      NewsData = newsData.articles;
-      displayNews();
-    })
-    .catch((error) => {
-      console.error("Error fetching news data:", error);
-    });
+    if (!response.ok) {
+      throw new Error("Failed to fetch news");
+    }
+
+    const data = await response.json();
+    const articles = Array.isArray(data.articles) ? data.articles : [];
+
+    disNews(endpoint, articles);
+
+  } catch (error) {
+    console.error(`News Error (${endpoint}):`, error);
+  }
 }
 
-fetchNewsData();
+function disNews(section, articles) {
+  let allNews = ``;
 
-function displayNews() {
-  NewsData =  NewsData.slice(1, 4);
-  console.log(NewsData);
-  let AllNews = ``;
-  for (let i = 0; i < NewsData.length; i++) {
-    AllNews += `
-          <div class="card">
-            <a href="${NewsData[i].url}" target="_blank">
-              <img
-                src="${NewsData[i].image}"
-              />
-            </a>
+  for (let article of articles) {
 
-            <h3>${NewsData[i].title.split(" ", 5).join(" ")}</h3>
+    let validImage = imageExtensions.some(ext =>
+      article.image && article.image.includes(ext)
+    );
 
-            <p>${NewsData[i].content.split(" ", 15).join(" ")}...</p>
-          </div>
+    if (!validImage) {
+      article.image = defaultImage;
+    }
+
+    const titleText = article.title
+      ? article.title.split(" ", 8).join(" ")
+      : "Untitled";
+
+    const descriptionText = article.description
+      ? article.description.split(" ", 20).join(" ") + "..."
+      : "";
+
+    allNews += `
+      <div class="card">
+        <a href="${article.url}" target="_blank">
+          <img src="${article.image}" />
+        </a>
+        <h3>${titleText}</h3>
+        <p>${descriptionText}</p>
+      </div>
     `;
   }
-  let grids = document.querySelectorAll(".grid");
-  grids.forEach((grid) => {
-    grid.innerHTML = AllNews;
-  });
-  console.log(AllNews);
+
+  document.querySelector(`#${section} .grid`).innerHTML = allNews;
+  document.querySelector(`#${section} .section-title`).textContent = section;
 }
+
+// ================= EXCHANGE =================
+async function fetchExchangeRates() {
+  try {
+    let exchangeApiUrl = `https://v6.exchangerate-api.com/v6/9bd25c05315d56fea5e2ee2a/latest/USD`;
+
+    const response = await fetch(exchangeApiUrl);
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch exchange rates");
+    }
+
+    const data = await response.json();
+
+    if (data.result === "success") {
+      const rates = data.conversion_rates;
+
+      const usdToEgp = rates.EGP;
+      const sarToUsd = 1 / rates.SAR;
+      const sarToEgp = sarToUsd * rates.EGP;
+
+      document.querySelector(".widget .rate:nth-child(2) span:last-child").textContent = usdToEgp.toFixed(2);
+      document.querySelector(".widget .rate:nth-child(3) span:last-child").textContent = sarToEgp.toFixed(2);
+    }
+
+  } catch (error) {
+    console.error("Exchange Error:", error);
+  }
+}
+
+// ================= INIT =================
+function initApp() {
+  // Loading placeholders
+  document.querySelectorAll(".grid").forEach(grid => {
+    grid.innerHTML = "<p>Loading...</p>";
+  });
+
+  fetchWeatherData();
+  fetchExchangeRates();
+
+  getNewData('Sports');
+  getNewData('Health');
+  getNewData('Technology');
+}
+
+initApp();
