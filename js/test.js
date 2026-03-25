@@ -292,5 +292,66 @@ fetch(exchangeApiUrl)
 
 
 
-const url = `https://apiv2.allsportsapi.com/football/?met=Fixtures&APIkey=5efdabdeeb26d880de853d00fba2261851584e012ea6534046841b7dad7a730e&from=2026-03-20&to=2026-03-25`;
-const urll = `https://apiv2.allsportsapi.com/football/?met=Fixtures&APIkey=5efdabdeeb26d880de853d00fba2261851584e012ea6534046841b7dad7a730e&from=2026-02-01&to=2026-03-30&leagueId=152`;
+// const url = `https://apiv2.allsportsapi.com/football/?met=Fixtures&APIkey=5efdabdeeb26d880de853d00fba2261851584e012ea6534046841b7dad7a730e&from=2026-03-20&to=2026-03-25`;
+// const urll = `https://apiv2.allsportsapi.com/football/?met=Fixtures&APIkey=5efdabdeeb26d880de853d00fba2261851584e012ea6534046841b7dad7a730e&from=2026-02-01&to=2026-03-30&leagueId=152`;
+
+const API_KEY = "fb3c28c393019151e0308b540abbb43f";
+
+const loading = document.getElementById("loading");
+const errorDiv = document.getElementById("error");
+const table = document.getElementById("table");
+const tableBody = document.getElementById("playersTable");
+
+fetch("https://v3.football.api-sports.io/players/topscorers?league=39&season=2023", {
+  method: "GET",
+  headers: {
+    "x-apisports-key": API_KEY
+  }
+})
+.then(res => {
+  if (!res.ok) throw new Error("API Error");
+  return res.json();
+})
+.then(data => {
+  loading.classList.add("d-none");
+
+  const players = data.response;
+
+  if (!players || players.length === 0) {
+    errorDiv.classList.remove("d-none");
+    errorDiv.innerText = "No data found";
+    return;
+  }
+
+  table.classList.remove("d-none");
+
+  let rows = "";
+
+  players.forEach(playerData => {
+    const player = playerData.player;
+    const stats = playerData.statistics[0];
+
+    rows += `
+      <tr>
+        <td>
+          <div class="player-cell" title="${player.name}">
+            <img src="${player.photo}" class="player-img">
+            <span class="player-name">${player.name}</span>
+          </div>
+        </td>
+        <td class="stat">${stats.goals.total || 0}</td>
+        <td class="stat">${stats.goals.assists || 0}</td>
+        <td class="stat">${stats.cards.yellow || 0}</td>
+        <td class="stat">${stats.cards.red || 0}</td>
+      </tr>
+    `;
+  });
+
+  tableBody.innerHTML = rows;
+})
+.catch(err => {
+  loading.classList.add("d-none");
+  errorDiv.classList.remove("d-none");
+  errorDiv.innerText = "Failed to load data";
+  console.error(err);
+});
